@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://hiddify.onl/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+Disallow: /.git/ 
