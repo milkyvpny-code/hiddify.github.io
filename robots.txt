@@ -4,7 +4,9 @@ Allow: /
 # Sitemap
 Sitemap: https://hiddify.onl/sitemap.xml
 
-# Crawl-delay
-Crawl-delay: 1
+# Allow access to assets and favicon
+Allow: /assets/
+Allow: /favicon.ico
 
-Disallow: /.git/ 
+# Common crawl delay
+Crawl-delay: 1
