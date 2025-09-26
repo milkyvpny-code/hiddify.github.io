@@ -1,0 +1,1103 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hiddify — загрузить лучший прокси-клиент для любой ОС</title>
+    
+    <meta name="description" content="Hiddify — современный VPN на базе VLESS и Hiddify. Простое подключение: скачай приложение, получи ключ в Telegram-боте и подключись. Поддержка Windows, macOS, Linux, iOS, Android. Приватность, скорость, стабильность.">
+    <meta name="keywords" content="VPN, VLESS, V2Ray, Hiddify, Xray, Reality, v2rayN, v2rayNG, sing-box, Windows VPN, macOS VPN, Linux VPN, Android VPN, iOS VPN, iPadOS VPN, Ubuntu VPN, Debian VPN, Arch VPN, Fedora VPN, OpenBSD VPN, FreeBSD VPN, Dragonfly BSD VPN, telegram vpn key, приватный VPN, безопасный VPN, быстрый VPN, WireGuard альтернативы, прокси vless, xray core, vmess vs vless, Hiddify, milky bot, vpn для телефонов, vpn для компьютера">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hiddify">
+    <meta property="og:description" content="Hiddify для Windows, macOS, Linux, iOS и Android. Подключение за 3 шага.">
+    <meta property="og:image" content="https://hiddify.com/assets/hiddify-preview.png">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <link rel="icon" type="image/png" href="./assets/hiddify-favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+    
+        ym(98765432, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/98765432" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    
+    <style>
+        :root {
+            --bg: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #8B5Cf6 100%); 
+            --fg: #ffffff; 
+            --muted: #f5f5f5; 
+            --glass-bg: rgba(255,255,255,.12); 
+            --glass-brd: rgba(255,255,255,.18); 
+            --shadow: 0 10px 30px rgba(0,0,0,.3); 
+            --radius: 22px; 
+            --maxw: 1200px;
+            --primary-blue: #4a90e2;
+            --primary-purple: #667eea;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body { 
+            margin: 0; 
+            padding: 0; 
+            background: var(--bg); 
+            color: var(--fg); 
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; 
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+        
+        a { 
+            color: #fff; 
+            text-decoration: none; 
+        }
+        
+        img { 
+            max-width: 100%; 
+            height: auto; 
+            display: block; 
+        }
+
+        .hiddify-container { 
+            max-width: var(--maxw); 
+            margin: 0 auto; 
+            padding: 24px; 
+        }
+
+        header { 
+            position: sticky;
+            top: 0;
+            z-index: 50; 
+            background: rgba(255,255,255,.08); 
+            backdrop-filter: saturate(140%) blur(10px); 
+            border-bottom: 1px solid var(--glass-brd); 
+        }
+        
+        .hiddify-header-inner { 
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            gap: 16px; 
+        }
+
+        .hiddify-brand { 
+            display: flex;
+            align-items: center;
+            gap: 12px; 
+            font-weight: 800; 
+            letter-spacing: .3px; 
+        }
+        
+        .hiddify-logo { 
+            width: 36px; 
+            height: 36px; 
+            object-fit: contain; 
+            border: 1px solid var(--glass-brd); 
+            border-radius: 8px; 
+            padding: 2px; 
+            background: var(--glass-bg);
+            filter: brightness(1.1) contrast(1.05);
+        }
+
+        .hiddify-navigation { 
+            display: flex;
+            gap: 18px; 
+            align-items: center;
+        }
+        
+        .hiddify-navigation a { 
+            opacity: .85; 
+        }
+
+        .btn-primary { 
+            padding: 10px 16px; 
+            border-radius: 999px; 
+            background: #fff; 
+            color: #000; 
+            font-weight: 700; 
+            box-shadow: var(--shadow); 
+            transition: transform .2s; 
+        }
+        
+        .btn-primary:hover { 
+            transform: translateY(-1px); 
+        }
+        
+        .btn-outline { 
+            padding: 10px 16px; 
+            border-radius: 999px; 
+            background: transparent;
+            color: #fff; 
+            border: 1px solid var(--glass-brd); 
+            font-weight: 700; 
+            transition: transform .2s; 
+        }
+        
+        .btn-outline:hover { 
+            transform: translateY(-1px); 
+        }
+
+        .hiddify-menu-toggle { 
+            display: none;
+            cursor: pointer; 
+            padding: 8px; 
+            border-radius: 10px; 
+            border: 1px solid var(--glass-brd); 
+            background: var(--glass-bg); 
+        }
+
+        @media (max-width:940px) {
+            .hiddify-navigation { 
+            display: none;
+            }
+            
+            .hiddify-menu-toggle { 
+                display: block; 
+            }
+            
+            .hiddify-navigation.is-open { 
+            display: flex;
+                flex-direction: column; 
+            position: absolute;
+                top: 68px; 
+                left: 12px; 
+                right: 12px; 
+                padding: 16px; 
+                border: 1px solid var(--glass-brd); 
+                background: rgba(255,255,255,.15); 
+                backdrop-filter: blur(14px); 
+                border-radius: 16px; 
+            }
+        }
+
+        .hiddify-hero { 
+            padding: 60px 0; 
+            background: radial-gradient(60% 120% at 100% 0%, rgba(255,255,255,.08), transparent 60%), 
+                        radial-gradient(80% 100% at 0% 0%, rgba(255,255,255,.06), transparent 70%); 
+        }
+        
+        .hiddify-hero__grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 28px; 
+            align-items: stretch; 
+        }
+        
+        .hiddify-hero__title { 
+            font-size: clamp(36px,6vw,64px); 
+            font-weight: 800; 
+            line-height: 1.1; 
+            margin-top: 28px; 
+            margin-bottom: 28px; 
+        }
+        
+        .badge { 
+            display: inline-flex; 
+            align-items: center;
+            gap: 8px; 
+            padding: 8px 12px; 
+            border-radius: 999px; 
+            border: 1px solid var(--glass-brd); 
+            background: var(--glass-bg); 
+            font-size: 13px; 
+            color: #fff; 
+        }
+        
+        .badge-region { 
+            display: inline-flex; 
+            align-items: center;
+            gap: 8px; 
+            margin-top: 10px; 
+            padding: 8px 12px; 
+            border: 1px solid var(--glass-brd); 
+            background: var(--glass-bg); 
+            border-radius: 999px; 
+            font-size: 14px; 
+            color: #fff; 
+        }
+        
+        .badge-region img { 
+            width: 18px; 
+            height: 18px; 
+            object-fit: contain; 
+            display: block;
+            filter: brightness(1.1) contrast(1.05);
+        }
+        
+        .hiddify-hero__subtitle { 
+            font-size: clamp(16px,2.6vw,22px); 
+            color: var(--muted); 
+            margin-top: 14px; 
+        }
+        
+        .hiddify-hero__actions { 
+            display: flex;
+            gap: 12px; 
+            margin-top: 22px; 
+            flex-wrap: wrap; 
+        }
+        
+        .u-glass { 
+            background: var(--glass-bg); 
+            border: 1px solid var(--glass-brd); 
+            border-radius: var(--radius); 
+            box-shadow: var(--shadow); 
+        }
+        
+        .hiddify-hero__panel { 
+            padding: 18px; 
+        }
+
+        section { 
+            padding: 60px 0; 
+        }
+        
+        .heading-section { 
+            font-size: 48px; 
+            font-weight: 800; 
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .hiddify-advantages-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3,1fr); 
+            gap: 18px; 
+        }
+
+        .hiddify-advantage-card { 
+            padding: 18px; 
+        }
+        
+        .hiddify-advantage-card h3 { 
+            margin: 0 0 8px 0; 
+            font-size: 18px; 
+        }
+        
+        .text-muted { 
+            color: var(--muted); 
+        }
+
+        .hiddify-download__list { 
+            display: grid;
+            grid-template-columns: repeat(3,1fr); 
+            gap: 14px 18px; 
+        }
+
+        .hiddify-download__item { 
+            display: flex;
+            align-items: center;
+            justify-content: space-between; 
+            gap: 12px; 
+            padding: 14px 18px; 
+            border-radius: 999px; 
+            border: 1px solid var(--glass-brd); 
+            background: var(--glass-bg); 
+            text-decoration: none;
+            transition: transform .15s ease, box-shadow .15s ease; 
+        }
+        
+        .hiddify-download__item:hover { 
+            transform: translateY(-1px); 
+            box-shadow: var(--shadow); 
+        }
+        
+        .hiddify-download__item span { 
+            font-size: 16px; 
+            font-weight: 600; 
+            color: #fff; 
+            flex: 1; 
+        }
+
+        .hiddify-faq-wrapper { 
+            display: grid;
+            gap: 12px; 
+        }
+        
+        .hiddify-faq__item { 
+            border-radius: 16px; 
+            border: 1px solid var(--glass-brd); 
+            background: var(--glass-bg); 
+            overflow: hidden;
+        }
+
+        .hiddify-faq__head { 
+            padding: 16px; 
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            color: #fff;
+            font-weight: 600; 
+        }
+        
+        .hiddify-faq__head span {
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        
+        .hiddify-faq__body { 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height .3s ease; 
+        }
+        
+        .hiddify-faq__content { 
+            padding: 0 16px 16px 16px; 
+            color: var(--muted); 
+        }
+        
+        .hiddify-faq__item.is-open .hiddify-faq__body { 
+            max-height: 420px; 
+        }
+
+        .how__grid { 
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 32px; 
+            align-items: start; 
+        }
+        
+        .how__video { 
+            padding: 14px; 
+            border-radius: 18px; 
+            border: 1px solid var(--glass-brd); 
+            background: var(--glass-bg); 
+        }
+        
+        .how__video-label { 
+            font-size: 16px; 
+            font-weight: 700; 
+            margin-bottom: 10px; 
+        }
+        
+        .how__video-el { 
+            width: 100%;
+            border-radius: 16px; 
+            display: block; 
+        }
+
+        .how__steps { 
+            display: flex;
+            flex-direction: column;
+            gap: 28px; 
+            position: relative; 
+        }
+
+        .how__step { 
+            display: flex;
+            align-items: flex-start; 
+            gap: 14px; 
+            position: relative; 
+        }
+        
+        .how__step:not(:last-child)::after { 
+            content: ""; 
+            position: absolute; 
+            left: 18px; 
+            top: 36px; 
+            bottom: -28px; 
+            width: 2px; 
+            background: var(--glass-brd); 
+        }
+        
+        .how__step-index { 
+            flex-shrink: 0;
+            width: 36px; 
+            height: 36px; 
+            background: #fff; 
+            color: #000; 
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700; 
+            font-size: 16px; 
+        }
+        
+        .how__step-content h3 { 
+            margin: 0 0 4px 0; 
+            font-size: 18px; 
+        }
+
+        .btn { 
+            margin-top: 8px; 
+            display: inline-flex; 
+            align-items: center;
+            gap: 8px; 
+            padding: 10px 14px; 
+            border-radius: 8px; 
+            background: #fff; 
+            color: #000; 
+            font-weight: 600;
+            text-decoration: none; 
+            transition: transform .15s ease; 
+        }
+        
+        .btn:hover { 
+            transform: translateY(-1px); 
+        }
+        
+        .btn--github { 
+            background: #333; 
+            color: #fff; 
+        }
+
+        .btn--tg { 
+            background: #0088cc; 
+            color: #fff; 
+        }
+        
+        .btn--tg svg path { 
+            fill: #fff; 
+        }
+        
+        .btn svg path,
+        .btn svg {
+            fill: currentColor;
+        }
+
+        .pricing { 
+            padding: 20px; 
+            border-radius: 28px; 
+            border: 1px solid var(--glass-brd); 
+            background: radial-gradient(120% 140% at 100% 0%, rgba(255,255,255,.06), transparent 60%), 
+                        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); 
+        }
+        
+        .pricing__top { 
+            display: grid;
+            grid-template-columns: .4fr .9fr; 
+            gap: 12px; 
+            margin-bottom: 12px; 
+        }
+        
+        .pricing__card { 
+            padding: 14px; 
+            border-radius: 16px; 
+            border: 1px solid var(--glass-brd); 
+            background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); 
+        }
+        
+        .pricing__card--left { 
+            border-radius: 18px; 
+        }
+        
+        .pricing__info { 
+            border-radius: 12px; 
+            background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.015)); 
+        }
+        
+        .pricing__heading { 
+            margin: 0 0 10px; 
+            font-size: 20px; 
+        }
+        
+        .pricing__price-line { 
+            display: flex;
+            align-items: baseline; 
+            gap: 8px; 
+        }
+        
+        .pricing__price-label { 
+            color: var(--muted); 
+        }
+        
+        .pricing__price-value { 
+            font-size: 28px; 
+            font-weight: 800; 
+            line-height: 1.2; 
+            padding: 2px 8px; 
+            border-radius: 10px; 
+            background: rgba(255,255,255,.12); 
+            border: 1px solid var(--glass-brd); 
+            color: #fff; 
+        }
+        
+        .pricing__note { 
+            margin-top: 6px; 
+            font-size: 12px; 
+            color: var(--muted); 
+        }
+        
+        .pricing__info-title { 
+            margin: 0 0 6px; 
+            font-size: 18px; 
+        }
+        
+        .pricing__info-text { 
+            margin: 0; 
+            color: var(--muted); 
+        }
+        
+        .pricing__cta { 
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            gap: 10px; 
+            width: 100%;
+            padding: 14px 16px; 
+            border-radius: 12px; 
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple)); 
+            color: #fff; 
+            font-weight: 700; 
+            text-decoration: none; 
+            margin: 8px 0 14px; 
+            transition: transform .15s ease, filter .15s ease, box-shadow .15s ease; 
+        }
+        
+        .pricing__cta:hover { 
+            transform: translateY(-1px); 
+            filter: brightness(1.05); 
+            box-shadow: 0 8px 24px rgba(74, 144, 226, .35); 
+        }
+        
+        .pricing__mini { 
+            padding: 14px; 
+            border-radius: 14px; 
+            border: 1px solid var(--glass-brd); 
+            background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); 
+            color: #fff; 
+            text-align: center;
+        }
+
+        .pricing__mini--full { 
+            width: 100%;
+        }
+        
+        .pricing__mini-title { 
+            margin: 0; 
+            font-size: 16px; 
+        }
+
+        .hiddify-download__item img { 
+            width: 22px; 
+            height: 22px; 
+            object-fit: contain;
+            filter: brightness(1.2) contrast(1.1);
+        }
+        
+        .hiddify-download__icon { 
+            width: 22px; 
+            height: 22px; 
+            flex-shrink: 0; 
+        }
+        
+        .hiddify-download__icon path {
+            fill: #fff;
+        }
+
+        .hiddify-download-wrapper { 
+            margin-top: 8px; 
+            margin-bottom: 24px; 
+        }
+
+        .compat-list { 
+            display: flex;
+            gap: 10px; 
+            flex-wrap: wrap; 
+            margin-top: 12px; 
+        }
+        
+        .badge--icon { 
+            display: inline-flex; 
+            align-items: center;
+            gap: 8px; 
+            padding: 8px 12px; 
+            border-radius: 999px; 
+            border: 1px solid var(--glass-brd); 
+            background: var(--glass-bg); 
+            font-size: 13px; 
+            color: #fff; 
+        }
+        
+        .badge--icon img { 
+            width: 16px; 
+            height: 16px; 
+            object-fit: contain;
+            filter: brightness(1.2) contrast(1.1);
+        }
+
+        footer { 
+            border-top: 1px solid var(--glass-brd); 
+            background: rgba(255,255,255,.08); 
+            backdrop-filter: saturate(140%) blur(10px); 
+            padding: 40px 0;
+        }
+        
+        .hiddify-footer-grid { 
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr; 
+            gap: 18px; 
+        }
+
+        .hiddify-advantage-card:hover, 
+        .hiddify-hero__panel:hover { 
+            transform: translateY(-2px); 
+        }
+        
+        .hiddify-advantage-card, 
+        .hiddify-hero__panel { 
+            transition: transform .2s ease; 
+        }
+
+        .device-frame { 
+            aspect-ratio: 12/10; 
+            border-radius: 18px; 
+            border: 1px solid var(--glass-brd); 
+            overflow: hidden; 
+            background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); 
+            display: flex;
+            align-items: flex-end; 
+            justify-content: center; 
+        }
+        
+        .hiddify-hero__image { 
+            width: 95%; 
+            height: 95%; 
+            object-fit: contain; 
+            object-position: bottom center; 
+        }
+
+        .visually-hidden:not(:focus):not(:active) { 
+            position: absolute!important; 
+            clip: rect(1px,1px,1px,1px); 
+            padding: 0!important; 
+            border: 0!important; 
+            height: 1px!important; 
+            width: 1px!important; 
+            overflow: hidden; 
+        }
+
+        @media (max-width:900px) {
+            .hiddify-hero__grid { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .hiddify-advantages-grid { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .how__grid { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .pricing__top { 
+                grid-template-columns: 1fr;
+            }
+            
+            .hiddify-download__list { 
+                grid-template-columns: 1fr;
+            }
+            
+            .hiddify-footer-grid { 
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="hiddify-container hiddify-header-inner">
+            <div class="hiddify-brand">
+                <img src="./assets/hiddify-logo-official.svg" alt="Hiddify logo" class="hiddify-logo">
+                <span>Hiddify</span>
+            </div>
+            <nav class="hiddify-navigation" id="hiddify-main-menu" role="navigation">
+                <a href="#benefits">Возможности</a>
+                <a href="#setup">Установка</a>
+                <a href="#help">Помощь</a>
+                <a href="#get-app" class="btn-primary">Получить</a>
+        </nav>
+            <button class="hiddify-menu-toggle" id="burger" aria-label="Открыть меню">☰</button>
+        </div>
+    </header>
+
+    <main id="hiddify-main-content" role="main">
+        <section class="hiddify-hero" id="hiddify-hero-section">
+            <div class="hiddify-container hiddify-hero__grid">
+                <div>
+                    <div class="badge">Технология VLESS</div>
+                    <h1 class="hiddify-hero__title">Hiddify — надёжный Proxy 2025</h1>
+                    <div class="badge-region">
+                        <img src="./assets/region_flag.png" alt="Флаг России">
+                        <span>Безупречно функционирует в РФ и странах СНГ</span>
+                </div>
+                    <p class="hiddify-hero__subtitle">Надёжное подключение и свободный доступ ко всему контенту с любого устройства.</p>
+                    <div class="hiddify-hero__actions">
+                        <a class="btn-primary" href="#get-app" rel="noopener">Загрузить последнюю версию</a>
+                        <a class="btn-primary" href="https://t.me/MilkyVPN_bot?start=hiddify" target="_blank" rel="noopener">Получить ключ</a>
+                        <a class="btn-outline" href="#setup">Как подключиться?</a>
+                    </div>
+                    </div>
+
+                <div class="u-glass hiddify-hero__panel">
+                    <div class="device-frame">
+                        <img src="./assets/new_hero_preview.png" alt="Интерфейс Hiddify" class="hiddify-hero__image">
+                    </div>
+                    <div class="compat-list" style="margin-top:12px">
+                        <span class="badge badge--icon"><img src="./assets/windows_system_logo.svg" alt=""> Windows</span>
+                        <span class="badge badge--icon"><img src="./assets/macos_system_logo.svg" alt=""> macOS</span>
+                        <span class="badge badge--icon"><img src="./assets/ios_system_logo.svg" alt=""> iOS / iPadOS</span>
+                        <span class="badge badge--icon"><img src="./assets/android_system_logo.svg" alt=""> Android</span>
+                        <span class="badge badge--icon"><img src="./assets/android_tv_system_logo.svg" alt=""> Android TV</span>
+                </div>
+            </div>
+                </div>
+        </section>
+
+        <section id="get-app" class="hiddify-download-section" aria-label="Скачать Hiddify">
+            <div class="hiddify-container">
+                <div class="hiddify-download-wrapper">
+                    <h2 class="heading-section">Скачать Hiddify</h2>
+                    <div class="hiddify-download__list">
+                        <a class="hiddify-download__item u-glass" href="https://apps.apple.com/app/hiddify-proxy-vpn/id6596777532" target="_blank" rel="noopener">
+                            <img src="./assets/ios_system_logo.svg" alt="">
+                            <span>Hiddify для iPhone</span>
+                            <svg class="hiddify-download__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12L3 7L4.4 5.55L7 8.15V0H9V8.15L11.6 5.55L13 7L8 12ZM2 16C1.45 16 0.979333 15.8043 0.588 15.413C0.196666 15.0217 0.000666667 14.5507 0 14V11H2V14H14V11H16V14C16 14.55 15.8043 15.021 15.413 15.413C15.0217 15.805 14.5507 16.0007 14 16H2Z" fill="white"/></svg>
+                        </a>
+                        <a class="hiddify-download__item u-glass" href="https://play.google.com/store/apps/details?id=app.hiddify.com" target="_blank" rel="noopener">
+                            <img src="./assets/android_system_logo.svg" alt="">
+                            <span>Hiddify для Android</span>
+                            <svg class="hiddify-download__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12L3 7L4.4 5.55L7 8.15V0H9V8.15L11.6 5.55L13 7L8 12ZM2 16C1.45 16 0.979333 15.8043 0.588 15.413C0.196666 15.0217 0.000666667 14.5507 0 14V11H2V14H14V11H16V14C16 14.55 15.8043 15.021 15.413 15.413C15.0217 15.805 14.5507 16.0007 14 16H2Z" fill="white"/></svg>
+                        </a>
+                        <a class="hiddify-download__item u-glass" href="https://github.com/hiddify/hiddify-app/releases" target="_blank" rel="noopener">
+                            <img src="./assets/windows_system_logo.svg" alt="">
+                            <span>Hiddify для Windows</span>
+                            <svg class="hiddify-download__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12L3 7L4.4 5.55L7 8.15V0H9V8.15L11.6 5.55L13 7L8 12ZM2 16C1.45 16 0.979333 15.8043 0.588 15.413C0.196666 15.0217 0.000666667 14.5507 0 14V11H2V14H14V11H16V14C16 14.55 15.8043 15.021 15.413 15.413C15.0217 15.805 14.5507 16.0007 14 16H2Z" fill="white"/></svg>
+                        </a>
+                        <a class="hiddify-download__item u-glass" href="https://apps.apple.com/app/hiddify-proxy-vpn/id6596777532" target="_blank" rel="noopener">
+                            <img src="./assets/macos_system_logo.svg" alt="">
+                            <span>Hiddify для MacBook</span>
+                            <svg class="hiddify-download__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12L3 7L4.4 5.55L7 8.15V0H9V8.15L11.6 5.55L13 7L8 12ZM2 16C1.45 16 0.979333 15.8043 0.588 15.413C0.196666 15.0217 0.000666667 14.5507 0 14V11H2V14H14V11H16V14C16 14.55 15.8043 15.021 15.413 15.413C15.0217 15.805 14.5507 16.0007 14 16H2Z" fill="white"/></svg>
+                        </a>
+                        <a class="hiddify-download__item u-glass" href="https://apps.apple.com/app/hiddify-proxy-vpn/id6596777532" target="_blank" rel="noopener">
+                            <img src="./assets/ios_system_logo.svg" alt="">
+                            <span>Hiddify для iPad</span>
+                            <svg class="hiddify-download__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12L3 7L4.4 5.55L7 8.15V0H9V8.15L11.6 5.55L13 7L8 12ZM2 16C1.45 16 0.979333 15.8043 0.588 15.413C0.196666 15.0217 0.000666667 14.5507 0 14V11H2V14H14V11H16V14C16 14.55 15.8043 15.021 15.413 15.413C15.0217 15.805 14.5507 16.0007 14 16H2Z" fill="white"/></svg>
+                        </a>
+                        <a class="hiddify-download__item u-glass" href="https://play.google.com/store/apps/details?id=app.hiddify.com" target="_blank" rel="noopener">
+                            <img src="./assets/android_tv_system_logo.svg" alt="">
+                            <span>Hiddify для Android TV</span>
+                            <svg class="hiddify-download__icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 12L3 7L4.4 5.55L7 8.15V0H9V8.15L11.6 5.55L13 7L8 12ZM2 16C1.45 16 0.979333 15.8043 0.588 15.413C0.196666 15.0217 0.000666667 14.5507 0 14V11H2V14H14V11H16V14C16 14.55 15.8043 15.021 15.413 15.413C15.0217 15.805 14.5507 16.0007 14 16H2Z" fill="white"/></svg>
+                        </a>
+                                        </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="setup" class="how" aria-label="Как подключиться">
+            <div class="hiddify-container">
+                <h2 class="heading-section">Как подключиться</h2>
+                <div class="how__grid">
+                    <div class="how__steps">
+                        <div class="how__step">
+                            <div class="how__step-index">1</div>
+                            <div class="how__step-content">
+                                <h3>Установи приложение</h3>
+                                <p class="text-muted">Скачай и инсталлируй Hiddify-клиент для вашей операционной системы</p>
+                                <a href="#get-app" class="btn">
+                                    <span>↓</span>
+                                    Скачать
+                                </a>
+                        </div>
+                    </div>
+
+                        <div class="how__step">
+                            <div class="how__step-index">2</div>
+                            <div class="how__step-content">
+                                <h3>Получи ключ</h3>
+                                <p class="text-muted">Клиенту требуется конфигурационный ключ для функционирования. Возьмите его у проверенного поставщика</p>
+                                <a href="https://t.me/MilkyVPN_bot?start=hiddify" target="_blank" rel="noopener" class="btn btn--tg">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM14.64 6.8C14.49 8.38 13.84 12.22 13.51 13.99C13.37 14.74 13.09 14.99 12.83 15.02C12.25 15.07 11.81 14.64 11.25 14.27C10.37 13.69 9.87 13.33 9.02 12.77C8.03 12.12 8.67 11.76 9.24 11.18C9.39 11.03 11.95 8.7 12 8.49C12.0069 8.45819 12.006 8.42517 11.9973 8.3938C11.9886 8.36244 11.9724 8.33367 11.95 8.31C11.89 8.26 11.81 8.28 11.74 8.29C11.65 8.31 10.25 9.24 7.52 11.08C7.12 11.35 6.76 11.49 6.44 11.48C6.08 11.47 5.4 11.28 4.89 11.11C4.26 10.91 3.77 10.8 3.81 10.45C3.83 10.27 4.08 10.09 4.55 9.9C7.47 8.63 9.41 7.79 10.38 7.39C13.16 6.23 13.73 6.03 14.11 6.03C14.19 6.03 14.38 6.05 14.5 6.15C14.6 6.23 14.63 6.34 14.64 6.42C14.63 6.48 14.65 6.66 14.64 6.8Z"/></svg>
+                                    Получить ключ
+                                </a>
+                                    </div>
+                                </div>
+                                
+                        <div class="how__step">
+                            <div class="how__step-index">3</div>
+                            <div class="how__step-content">
+                                <h3>Импортируй конфигурацию и начинай работу</h3>
+                                <p class="text-muted">Коснись кнопки + и введи полученный ключ доступа</p>
+                                    </div>
+                                    </div>
+                                </div>
+                                    </div>
+                                    </div>
+        </section>
+
+        <section id="pricing" aria-label="Стоимость">
+            <div class="hiddify-container">
+                <h2 class="heading-section">Стоимость</h2>
+                <div class="pricing">
+                    <div class="pricing__top">
+                        <article class="pricing__card pricing__card--left">
+                            <h3 class="pricing__heading">Прозрачные тарифы без<br>скрытых переплат</h3>
+                            <div class="pricing__price-line">
+                                <span class="pricing__price-label">от</span>
+                                <span class="pricing__price-value">149&nbsp;₽/мес</span>
+                                    </div>
+                            <div class="pricing__note">Оплата исключительно за реально используемый функционал</div>
+                        </article>
+                        <article class="pricing__card pricing__info">
+                            <h3 class="pricing__info-title">Зачем нужна платная подписка?</h3>
+                            <p class="pricing__info-text">Наша стоимость покрывает лишь затраты на поддержание высококачественного подключения. Бесплатные решения экономят на защите данных, создавая риски конфиденциальности, демонстрируют нестабильность и регулярно блокируются, принуждая к поиску альтернатив. Платная подписка устраняет данные проблемы, обеспечивая бесперебойную работу круглосуточно.</p>
+                        </article>
+                                    </div>
+                    <a class="pricing__cta" href="https://t.me/MilkyVPN_bot?start=hiddify" target="_blank" rel="noopener">
+                        <span class="pricing__cta-icon" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM14.64 6.8C14.49 8.38 13.84 12.22 13.51 13.99C13.37 14.74 13.09 14.99 12.83 15.02C12.25 15.07 11.81 14.64 11.25 14.27C10.37 13.69 9.87 13.33 9.02 12.77C8.03 12.12 8.67 11.76 9.24 11.18C9.39 11.03 11.95 8.7 12 8.49C12.0069 8.45819 12.006 8.42517 11.9973 8.3938C11.9886 8.36244 11.9724 8.33367 11.95 8.31C11.89 8.26 11.81 8.28 11.74 8.29C11.65 8.31 10.25 9.24 7.52 11.08C7.12 11.35 6.76 11.49 6.44 11.48C6.08 11.47 5.4 11.28 4.89 11.11C4.26 10.91 3.77 10.8 3.81 10.45C3.83 10.27 4.08 10.09 4.55 9.9C7.47 8.63 9.41 7.79 10.38 7.39C13.16 6.23 13.73 6.03 14.11 6.03C14.19 6.03 14.38 6.05 14.5 6.15C14.6 6.23 14.63 6.34 14.64 6.42C14.63 6.48 14.65 6.66 14.64 6.8Z"/></svg>
+                        </span>
+                        <span>Получить пробный ключ</span>
+                    </a>
+                    <article class="pricing__mini pricing__mini--full">
+                        <h4 class="pricing__mini-title">Обеспечиваем соединение через сотовую связь и беспроводные сети</h4>
+                    </article>
+                                </div>
+                            </div>
+        </section>
+
+        <section id="benefits" class="hiddify-advantages-section">
+            <div class="hiddify-container">
+                <h2 class="heading-section">Почему Hiddify + VLESS</h2>
+                <div class="hiddify-advantages-grid">
+                    <article class="u-glass hiddify-advantage-card">
+                        <h3>Всегда на связи</h3>
+                        <p class="text-muted">Забудьте о ручном управлении — приложение работает автоматически, предоставляя надёжный доступ ко всем ресурсам и сервисам.</p>
+                    </article>
+                    <article class="u-glass hiddify-advantage-card">
+                        <h3>Работают все сервисы</h3>
+                        <p class="text-muted">Потоковое видео, чаты, онлайн-игры и бизнес-приложения — всё функционирует без каких-либо препятствий.</p>
+                    </article>
+                    <article class="u-glass hiddify-advantage-card">
+                        <h3>Маскировка под обычный трафик</h3>
+                        <p class="text-muted">Соединение имитирует стандартный веб-трафик, оставаясь незаметным для систем блокировки.</p>
+                    </article>
+                    <article class="u-glass hiddify-advantage-card">
+                        <h3>Конфиденциальность</h3>
+                        <p class="text-muted">Полное отсутствие логирования активности. Ваши данные и действия в интернете остаются конфиденциальными.</p>
+                    </article>
+                    <article class="u-glass hiddify-advantage-card">
+                        <h3>Скорость без компромиссов</h3>
+                        <p class="text-muted">Высокопроизводительные серверы обеспечивают быстрый просмотр HD-контента и голосовые вызовы без лагов.</p>
+                    </article>
+                    <article class="u-glass hiddify-advantage-card">
+                        <h3>Доступен для любых систем</h3>
+                        <p class="text-muted">Установите клиент, добавьте ключ — мгновенное подключение на всех платформах без технических знаний.</p>
+                    </article>
+                            </div>
+                            </div>
+        </section>
+
+        <section id="help" class="hiddify-faq-section">
+            <div class="hiddify-container">
+                <h2 class="heading-section">FAQ</h2>
+                <div class="hiddify-faq-wrapper" id="hiddify-faq-accordion">
+                    <div class="hiddify-faq__item">
+                        <div class="hiddify-faq__head"><strong>Не подключается. Что проверить в первую очередь?</strong><span>＋</span></div>
+                        <div class="hiddify-faq__body">
+                            <div class="hiddify-faq__content">
+                                <ol>
+                                    <li>Убедитесь, что ключ действителен и срок его использования не завершён.</li>
+                                    <li>Проверьте базовое интернет-соединение без VPN (через мобильные данные / Wi-Fi).</li>
+                                    <li>Закройте конкурирующие VPN-клиенты и перезагрузите Hiddify.</li>
+                                    <li>Попробуйте другой сервер или протокол передачи (Reality / WS / gRPC).</li>
+                                    <li>Предоставьте разрешения VPN в системе и отключите энергосбережение.</li>
+                                    <li>Синхронизируйте дату/время устройства с автоматическими настройками.</li>
+                                </ol>
+                            </div>
+                            </div>
+                            </div>
+                    <div class="hiddify-faq__item">
+                        <div class="hiddify-faq__head"><strong>Как получить и активировать ключ?</strong><span>＋</span></div>
+                        <div class="hiddify-faq__body">
+                            <div class="hiddify-faq__content">
+                                <ol>
+                                    <li>Откройте Telegram-бота <b>MilkyVPN</b> и возьмите пробный или тарифный ключ.</li>
+                                    <li>Скопируйте ссылку формата <code>vless://...</code> или покажите QR-код.</li>
+                                    <li>В приложении нажмите <b>+</b> → «Импорт по ссылке» или «Сканировать QR» → «Подключиться».</li>
+                                </ol>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="hiddify-faq__item">
+                        <div class="hiddify-faq__head"><strong>Можно ли использовать один ключ на нескольких устройствах?</strong><span>＋</span></div>
+                        <div class="hiddify-faq__body">
+                            <div class="hiddify-faq__content">
+                                Лимит параллельных подключений определяется настройками конкретного ключа.
+                                По умолчанию действует ограничение <b>1 активное устройство</b> на ключ.
+                                Для использования на множественных гаджетах приобретите отдельные ключи через бота.
+                </div>
+            </div>
+                        </div>
+                    <div class="hiddify-faq__item">
+                        <div class="hiddify-faq__head"><strong>Скорость низкая. Как ускорить соединение?</strong><span>＋</span></div>
+                        <div class="hiddify-faq__body">
+                            <div class="hiddify-faq__content">
+                                <ul>
+                                    <li>Выберите ближайшую к вам локацию/узел.</li>
+                                    <li>Переключите транспорт: попробуйте <b>Reality</b> вместо WS (или наоборот).</li>
+                                    <li>Отключите экономию энергии/данных, закройте торренты и нагружающие загрузки.</li>
+                                    <li>На Android включите «Не оптимизировать» для приложения Hiddify.</li>
+                                    <li>Переподключитесь или перезапустите устройство — это обновит сетевой стек.</li>
+                                </ul>
+                                    </div>
+                                    </div>
+                                </div>
+                    <div class="hiddify-faq__item">
+                        <div class="hiddify-faq__head"><strong>На каких устройствах работает?</strong><span>＋</span></div>
+                        <div class="hiddify-faq__body">
+                            <div class="hiddify-faq__content">
+                                Поддерживаются <b>Windows</b>, <b>macOS</b> (включая Apple&nbsp;Silicon), <b>iOS/iPadOS</b>, <b>Android</b> и <b>Android&nbsp;TV</b>.
+                                Для Linux доступны совместимые клиенты (Hiddify/sing-box).
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hiddify-faq__item">
+                        <div class="hiddify-faq__head"><strong>Что с приватностью и логами?</strong><span>＋</span></div>
+                        <div class="hiddify-faq__body">
+                            <div class="hiddify-faq__content">
+                                Приложение не ведёт историю посещённых сайтов. На стороне инфраструктуры хранится минимальный набор технических метрик
+                                (время подключения, объём трафика, срок действия ключа) — только для работы сервиса и поддержки.
+                                </div>
+                                </div>
+                            </div>
+                    <div class="hiddify-faq__item">
+                        <div class="hiddify-faq__head"><strong>Есть ли пробный период и как оплатить?</strong><span>＋</span></div>
+                        <div class="hiddify-faq__body">
+                            <div class="hiddify-faq__content">
+                                В боте доступен <b>пробный ключ</b>. Далее — подписка от <b>149&nbsp;₽/мес</b>.
+                                Актуальные способы оплаты и тарифы показываются внутри бота при оформлении.
+                                        </div>
+                                        </div>
+                                        </div>
+                    <div class="hiddify-faq__item">
+                        <div class="hiddify-faq__head"><strong>Как перенести ключ на новое устройство?</strong><span>＋</span></div>
+                        <div class="hiddify-faq__body">
+                            <div class="hiddify-faq__content">
+                                На старом устройстве откройте профиль → «Показать QR/ссылку» и импортируйте его на новом через «Импорт по ссылке»
+                                или «Сканировать QR». Если ключ одноразовый или ограничен по устройствам — получите новый в боте.
+                                    </div>
+                                </div>
+                                            </div>
+                                        </div>
+                                            </div>
+        </section>
+
+        <section class="visually-hidden" aria-label="SEO контент">
+            <div class="hiddify-container">
+                <p>Hiddify — современное VPN-решение на основе VLESS, V2Ray, Xray Core и sing-box для Windows 11, Windows 10, macOS Sonoma, macOS Ventura, Ubuntu, Debian, Arch Linux, Fedora, FreeBSD, OpenBSD, Android 14/13/12, iOS 18/17, iPadOS.</p>
+                <p>Ключевые запросы: VPN для Windows, VPN для macOS, VPN для Linux, VPN для Android, VPN для iPhone, VLESS конфигурация, VLESS TLS, Hiddify iOS, Hiddify Android, v2rayN download, v2rayNG apk, sing-box config, Xray Reality, WebSocket, H2, gRPC, UUID, импорт VLESS-ссылки, Telegram VPN bot, MilkyVPN bot.</p>
+                                        </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="hiddify-container hiddify-footer-grid">
+                                            <div>
+                <div class="hiddify-brand" style="margin-bottom:10px">
+                    <img src="./assets/hiddify-logo-official.svg" alt="Hiddify logo" class="hiddify-logo">
+                    <span>Hiddify</span>
+                                            </div>
+                <p style="color:var(--muted);margin-top:10px;">Надёжный прокси-клиент на современных технологиях</p>
+                                        </div>
+                                            <div>
+                <strong>Разделы</strong>
+                <ul style="padding-left:18px;line-height:2;margin-top:10px;">
+                    <li><a href="#benefits">Возможности</a></li>
+                    <li><a href="#setup">Установка</a></li>
+                    <li><a href="#help">Помощь</a></li>
+                </ul>
+                                            </div>
+                                            <div>
+                <strong>Контакты</strong>
+                <ul style="padding-left:18px;line-height:2;margin-top:10px;">
+                    <li><a href="https://t.me/MilkyVPN_bot?start=hiddify" target="_blank" rel="noopener">Telegram</a></li>
+                </ul>
+                                            </div>
+                                        </div>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Hiddify",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Windows, macOS, Linux, Android, iOS",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "keywords": "VPN,VLESS,V2Ray,Hiddify,Xray,Reality,v2rayN,v2rayNG,sing-box,Windows VPN,macOS VPN,Linux VPN,Android VPN,iOS VPN,Telegram VPN key"
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Не подключается. Что проверить в первую очередь?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Проверьте активность ключа, стабильность интернета без VPN, отключите другие VPN, смените транспорт Reality/WS/gRPC, разрешите VPN в системе."
+                }
+            },
+            {
+                "@type": "Question", 
+                "name": "Как получить и активировать ключ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Откройте Telegram-бота MilkyVPN, получите пробный или тарифный ключ в формате vless://, импортируйте в приложение через + → Импорт по ссылке."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <script>
+        const burger = document.getElementById('burger');
+        const menu = document.getElementById('hiddify-main-menu');
+        burger?.addEventListener('click', () => { menu.classList.toggle('is-open'); });
+
+        document.querySelectorAll('.hiddify-faq__item').forEach((item) => {
+            item.querySelector('.hiddify-faq__head').addEventListener('click', () => {
+                item.classList.toggle('is-open');
+                });
+            });
+
+        // Улучшенная навигация для SEO
+        document.getElementById('hiddify-main-menu').addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                const targetId = e.target.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Обновление URL для SEO
+                        history.pushState(null, null, targetId);
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

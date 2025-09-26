@@ -1,0 +1,19 @@
+<svg width="300" height="200" viewBox="0 0 300 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#667eea;stop-opacity:0.1" />
+<stop offset="50%" style="stop-color:#764ba2;stop-opacity:0.1" />
+<stop offset="100%" style="stop-color:#f093fb;stop-opacity:0.1" />
+</linearGradient>
+<linearGradient id="logo" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
+<stop offset="100%" style="stop-color:#667eea;stop-opacity:1" />
+</linearGradient>
+</defs>
+<rect width="300" height="200" rx="12" fill="url(#bg)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+<rect x="125" y="75" width="50" height="50" rx="12" fill="url(#logo)"/>
+<path d="M137 87H143V97H149V87H155V113H149V101H143V113H137V87Z" fill="white" font-weight="600"/>
+<text x="150" y="140" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="rgba(255,255,255,0.9)" text-anchor="middle">Hiddify App</text>
+<text x="150" y="160" font-family="Inter, sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">Современный VPN-клиент</text>
+</svg>
+
